@@ -1,0 +1,42 @@
+{
+  "name": "vue-project-cli",
+  "version": "0.1.0",
+  "description": "vue project command line tool",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "vp": "bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RRDAWLX/vue-project-cli.git"
+  },
+  "keywords": [
+    "vue",
+    "cli"
+  ],
+  "author": "rrdawlx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RRDAWLX/vue-project-cli/issues"
+  },
+  "homepage": "https://github.com/RRDAWLX/vue-project-cli#readme",
+  "dependencies": {
+    "babel-loader": "^8.0.4",
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less-loader": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "vue-loader": "^15.4.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.25.1",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
