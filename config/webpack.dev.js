@@ -5,18 +5,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const root = process.cwd()
 
-function resolvePath(...dir) {
-  return path.resolve(root, ...dir)
-}
-
 module.exports = {
   mode: 'development',
 
-  entry: [resolvePath('src/app.js')],
+  context: root,
+
+  entry: ['./src/app.js'],
 
   output: {
     filename: 'js/[name].js',
-    path: resolvePath('dist'),
+    path: path.resolve(root, 'dist'),
     publicPath: '/'
   },
 
@@ -67,7 +65,7 @@ module.exports = {
 
     // 生成一个HTML文件
     new HtmlWebpackPlugin({
-      template: resolvePath('src/index.html')
+      template: path.resolve(root, 'src/index.html')
     }),
 
     new FriendlyErrorsWebpackPlugin(),
@@ -76,18 +74,17 @@ module.exports = {
   resolve: {
     extensions: ['.vue', '.js'],
     modules: [
-      resolvePath('src'),
       'node_modules',
-      resolvePath('node_modules'),
-      resolvePath(__dirname, '../node_modules')
+      path.resolve(root, 'node_modules'),
+      path.resolve(__dirname, '../node_modules')
     ]
   },
 
   resolveLoader: {
     modules: [
       'node_modules',
-      resolvePath('node_modules'),
-      resolvePath(__dirname, '../node_modules')
+      path.resolve(root, 'node_modules'),
+      path.resolve(__dirname, '../node_modules')
     ]
   },
 
