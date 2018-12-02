@@ -1,37 +1,19 @@
-const path = require('path'),
-  VueLoaderPlugin = require('vue-loader/lib/plugin'),
-  HtmlWebpackPlugin = require('html-webpack-plugin'),
-  CleanWebpackPlugin = require('clean-webpack-plugin'),
-  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-  UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
-  OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const baseConfig = require('./webpack.base')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
-module.exports = {
+module.exports = merge(baseConfig, {
   mode: 'production',
 
-  entry: {
-    main: './src/app.js'
-  },
-
   output: {
-    filename: 'js/[name].[chunkhash:6].js',
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/'
+    filename: 'js/[name].[contenthash:6].js',
   },
 
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-
-      {
-        test: /\.(js|jsx)$/,
-        // exclude: /node_modules/,
-        loader: 'babel-loader'
-      },
-
       {
         test: /\.css|less$/,
         // exclude: /node_modules/,
@@ -50,7 +32,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: 'image/[name].[hash:6].[ext]'
-              // outputPath: 'images/'  // 用于将图片打包至指定目录，已被发布到单独的图片域
+              // outputPath: 'images/'  // 用于将图片打包至指定目录，以便发布到单独的图片域
               // publicPath: 'https://mjrhd.vipstatic.com/'   // 用于指定图片资源发布路径
             }
           },
@@ -80,49 +62,19 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(['../dist'], {allowExternal: true}),
-
-    // 用于解析 .vue 文件
-    new VueLoaderPlugin(),
+    // 给予模块基于相对路径生成的 hash 作为模块标识符，可以避免 vendors 内容未变但模块 id 被修改。
+    // 建议在 production 模式中使用此插件。
+    new webpack.HashedModuleIdsPlugin(),
 
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[chunkhash:6].css',
+      filename: 'css/[name].[contenthash:6].css',
     }),
-
-    // 生成一个HTML文件
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    })
   ],
-
-  resolve: {
-    extensions: ['.vue', '.js']
-  },
 
   optimization: {
     minimizer: [
       new UglifyJsPlugin(),
       new OptimizeCSSAssetsPlugin(),
-    ],
-
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
-        },
-
-        styles: {
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    },
-
-    runtimeChunk: {
-      name: 'manifest'
-    }
+    ]
   }
-}
+})

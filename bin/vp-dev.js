@@ -5,12 +5,25 @@ const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const webpackDevServer = require('webpack-dev-server')
-const config = require('../config/webpack.dev')
+const utils = require('../utils')
+
+program.option('--mode <mode>', '项目模式，根据此值选择 webpack 配置，可选项：development、production。', 'development')
+  .option('--node-env <env>', '设置 process.env.NODE_ENV 的值，默认与 mode 为相同值。')
+  .parse(process.argv)
+
+utils.checkMode(program.mode)
+
+process.env.NODE_ENV = program.nodeEnv || program.mode
+
+let webpackConfig = utils.getWebpackConfig({
+  command: 'dev',
+  mode: program.mode
+})
 
 const options = {
   contentBase: path.resolve(process.cwd(), 'dist'),
   host: 'localhost',
-  port: 8081,
+  port: 8080,
   historyApiFallback: true,   // 支持单页应用，用 index.html 响应 404 请求，不会响应被代理的请求。
   proxy: {
     '/': {
@@ -40,10 +53,26 @@ const options = {
   quiet: true
 }
 
-webpackDevServer.addDevServerEntrypoints(config, options)
-const compiler = webpack(config)
+if (webpackConfig.devServer) {
+  Object.assign(options, webpackConfig)
+  delete webpackConfig.devServer
+}
+
+webpackDevServer.addDevServerEntrypoints(webpackConfig, options)
+const compiler = webpack(webpackConfig)
+compiler.hooks.done.tap('done', hint)
+
 const server = new webpackDevServer(compiler, options)
 
 server.listen(options.port, options.host, () => {
-  console.log(chalk.blue(`dev server is listening at ${options.port}`))
+  console.log()
+  hint()
+  console.log(`${chalk.bgBlue.black(' WAIT ')} ${chalk.blue('Compiling...')}`)
 })
+
+function hint() {
+  console.log(chalk.cyan(`mode: ${program.mode}`))
+  console.log(chalk.cyan(`process.env.NODE_ENV: ${process.env.NODE_ENV}`))
+  console.log(chalk.cyan(`dev server is listening at ${options.https ? 'https' : 'http'}://${options.host}:${options.port}`))
+  console.log()
+}
