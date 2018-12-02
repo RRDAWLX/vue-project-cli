@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const program = require('commander')
-const chalk = require('chalk')
 const utils = require('../utils')
 
 program.option('--mode <mode>', '项目模式，根据此值选择 webpack 配置，可选项：development、production。', 'production')

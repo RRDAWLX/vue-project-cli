@@ -2,10 +2,12 @@
   "name": "vue-project-cli",
   "version": "0.1.0",
   "description": "vue project command line tool",
-  "main": "bin/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./bin ./config ./utils"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "bin": {
     "vp": "bin/index.js"
   },
