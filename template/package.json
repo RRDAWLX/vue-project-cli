@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "dev": "vp dev",
-    "check-verson": "vp check-version",
+    "build": "vp build",
     "lint": "eslint src/"
   },
   "pre-commit": [
+    "lint",
     "check-version"
   ],
   "repository": {

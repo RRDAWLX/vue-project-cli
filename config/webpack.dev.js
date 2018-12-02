@@ -1,4 +1,5 @@
 const baseConfig = require('./webpack.base')
+const customConfig = require('./custom')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
@@ -41,4 +42,4 @@ module.exports = merge(baseConfig, {
   ],
 
   devtool: 'eval-source-map'
-})
+}, customConfig.webpack || {})

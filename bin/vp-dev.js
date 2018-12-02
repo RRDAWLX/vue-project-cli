@@ -20,6 +20,13 @@ let webpackConfig = utils.getWebpackConfig({
   mode: program.mode
 })
 
+let proxyTargets = {
+  dev: 'http://localhost:8081',   // 本地开发时的转发地址
+  debug: 'http://localhost:8082'  // 联调时的转发地址
+}
+let customConfig = require('../config/custom')
+Object.assign(proxyTargets, customConfig.proxyTargets || {})
+
 const options = {
   contentBase: path.resolve(process.cwd(), 'dist'),
   host: 'localhost',
@@ -27,22 +34,24 @@ const options = {
   historyApiFallback: true,   // 支持单页应用，用 index.html 响应 404 请求，不会响应被代理的请求。
   proxy: {
     '/': {
-      target: 'http://localhost:5000',
       bypass: req => {
         // 需要代理的请求无需返回任何值
-        // 不需要代理的请求返回 false 或者响应请求的内容的路径
-        if (/^\/api\//.test(req.path)) {
-          return
+        // 不需要代理的返回请求路径
+        if (!/^\/api\//.test(req.path)) {
+          return req.path
         }
-        return false
       },
-      pathRewrite: {'^/api': ''},
+
+      target: proxyTargets.dev,
+
       router: req => {
         // 当发起请求的链接中带有参数 debug 且值为 true 时，将请求代理至另外一台 api 服务器，比如测试环境的服务器。
         if (/(\?|&)debug=true(&|$)/.test(req.get('Referer'))) {
-          return 'http://localhost:6000'
+          return proxyTargets.debug
         }
-      }
+      },
+
+      pathRewrite: {'^/api': ''}
     }
   },
   overlay: {    // 在网页中显示编译警告与错误

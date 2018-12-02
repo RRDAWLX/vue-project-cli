@@ -1,9 +1,11 @@
 const baseConfig = require('./webpack.base')
+const customConfig = require('./custom')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
 
 module.exports = merge(baseConfig, {
   mode: 'production',
@@ -77,4 +79,4 @@ module.exports = merge(baseConfig, {
       new OptimizeCSSAssetsPlugin(),
     ]
   }
-})
+}, customConfig.webpack || {})

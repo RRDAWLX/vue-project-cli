@@ -16,15 +16,9 @@ module.exports = {
     "sourceType": "module"
   },
   "rules": {
-    "indent": [
-      "error", 2
-    ],
-    "linebreak-style": [
-      "error", "unix"
-    ],
-    "quotes": [
-      "error", "single"
-    ],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
     "semi": ["error", "never"],
     "no-console": "off"
   }
