@@ -6,8 +6,9 @@ Vue.use(Router)
 
 const routes = [
   {
+    name: 'test',
     path: '/test',
-    component: () => import('../views/test/Main')
+    component: () => import('../views/test')
   },
   ...routeA
 ]

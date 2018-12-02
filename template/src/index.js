@@ -1,7 +1,7 @@
 import 'babel-polyfill'
 import 'whatwg-fetch'
 import Vue from 'vue'
-import App from './App'
+import App from './app'
 // import { sync } from 'vuex-router-sync'
 import router from './router'
 import store from './store'
@@ -21,3 +21,5 @@ if (debug) {
 }
 
 app.$mount('#app')
+
+console.log('personal: ', process.env.personal)
