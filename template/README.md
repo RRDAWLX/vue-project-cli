@@ -27,7 +27,7 @@ src     // 项目代码
         ├── index.vue  // 该视图的主组件
         ├── private-sub-comp.vue    // 视图私有子组件
         ├── private-common-comp.vue   // 视图私有公用组件，如果有必要，可提升为全局公用组件
-        ├── private-util.js   // 视图私有工具，如果有必要，可提升为全局公用工具
+        ├── private-utils.js   // 视图私有工具，如果有必要，可提升为全局公用工具
         ├── assets  // 视图私有资源，如果有必要，可提升为全局公用资源
         ├── store   // 视图数据模块
         └── common  // 如果视图私有的工具和公共组件很多，可以增加一个 common 文件夹来管理
@@ -55,29 +55,30 @@ src     // 项目代码
 ├── utils   // 全局公用工具模块
 |   └── global-common-utils.js
 |
-└── project-name   // 各自项目代码
-    ├── api   // 项目内 api，可根据 api url 划分，也可根据页面划分
-    |   └── project-api.js
-    ├── assets  // 项目内公用资源：图片、文档、音频……
-    |   └── project-common-asset.png
-    ├── components // 项目公用组件，如有必要，可提升为全局公用组件
-    |   └── project-common-comp.vue
-    ├── route.js    // 项目路由配置
-    ├── store   // 项目数据模块
-    |   ├── index.js  // 在这里引用各视图数据模块
-    |   └── modules   // 项目内公用数据模块，根据功能划分
-    |       └── project-common-module.js
-    ├── utils   // 项目内公用工具模块，如有必要，可提升为全局公用工具
-    |   └── project-common-utils.js
-    └── views   // 视图（页面），根据项目划分
-        └── view-name  // 一个文件夹代表一个视图
-            ├── index.vue  // 该视图的主组件
-            ├── private-sub-comp.vue    // 视图私有子组件
-            ├── private-common-comp.vue   // 视图私有公用组件，如果有必要，可提升为全局或项目公用组件
-            ├── private-utils.js   // 视图私有工具，如果有必要，可提升为全局或项目公用工具
-            ├── assets  // 视图私有资源，如果有必要，可提升为全局公或项目用资源
-            ├── store   // 视图数据模块
-            └── common  // 如果视图私有的工具和公共组件很多，可以增加一个 common 文件夹来管理
+└── projects
+    └── project-name   // 各自项目代码
+        ├── api   // 项目内 api，可根据 api url 划分，也可根据页面划分
+        |   └── project-api.js
+        ├── assets  // 项目内公用资源：图片、文档、音频……
+        |   └── project-common-asset.png
+        ├── components // 项目公用组件，如有必要，可提升为全局公用组件
+        |   └── project-common-comp.vue
+        ├── routes.js    // 项目路由配置
+        ├── store   // 项目数据模块
+        |   ├── index.js  // 在这里引用各视图数据模块
+        |   └── modules   // 项目内公用数据模块，根据功能划分
+        |       └── project-common-module.js
+        ├── utils   // 项目内公用工具模块，如有必要，可提升为全局公用工具
+        |   └── project-common-utils.js
+        └── views   // 视图（页面），根据项目划分
+            └── view-name  // 一个文件夹代表一个视图
+                ├── index.vue  // 该视图的主组件
+                ├── private-sub-comp.vue    // 视图私有子组件
+                ├── private-common-comp.vue   // 视图私有公用组件，如果有必要，可提升为全局或项目公用组件
+                ├── private-utils.js   // 视图私有工具，如果有必要，可提升为全局或项目公用工具
+                ├── assets  // 视图私有资源，如果有必要，可提升为全局公或项目用资源
+                ├── store   // 视图数据模块
+                └── common  // 如果视图私有的工具和公共组件很多，可以增加一个 common 文件夹来管理
 ```
 ### 目录结构：一个仓库包含多个项目(方案二)
 ```
@@ -121,7 +122,7 @@ src     // 项目代码
             ├── index.vue  // 该视图的主组件
             ├── private-sub-comp.vue    // 视图私有子组件
             ├── private-common-comp.vue   // 视图私有公用组件，如果有必要，可提升为全局或项目公用组件
-            ├── private-util.js   // 视图私有工具，如果有必要，可提升为全局或项目公用工具
+            ├── private-utils.js   // 视图私有工具，如果有必要，可提升为全局或项目公用工具
             ├── assets  // 视图私有资源，如果有必要，可提升为全局或项目公用资源
             ├── store   // 视图数据模块
             └── common  // 如果视图私有的工具和公共组件很多，可以增加一个 common 文件夹来管理
