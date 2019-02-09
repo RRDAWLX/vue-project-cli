@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vp dev",
     "build": "vp build",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "mock": "mock --port 8081 --map-file ./mock/map.js --base-dir ./mock/api/"
   },
   "pre-commit": [
     "lint",
@@ -35,6 +36,7 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
+    "@rrdawlx/mock-server": "^1.1.0",
     "autoprefixer": "^9.3.1",
     "babel-eslint": "^10.0.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
