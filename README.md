@@ -6,14 +6,16 @@ vue project command line tool
 Usage: vp [options] [command]
 
 Options:
-  -v, --version  output the version number
-  -h, --help     output usage information
+  -v, --version    output the version number
+  -h, --help       output usage information
 
 Commands:
-  dev            项目开发
-  build          项目构建
-  inspect        查看项目配置
-  help [cmd]     display help for [cmd]
+  dev              项目开发
+  build            项目构建
+  inspect          查看项目配置
+  check-version    校验项目中 package.json 的 version 字段是否已升级
+  add-version-tag  给项目仓库打上基于 package.json 中 version 的 tag
+  help [cmd]       display help for [cmd]
 ```
 ```
 Usage: vp-dev [options]
@@ -39,6 +41,3 @@ Options:
   --node-env <env>  设置 process.env.NODE_ENV 的值，默认与 mode 为相同值。
   -h, --help        output usage information
 ```
-
-# 开发过程问题记录
-- autoprefixer、babel-plugin-syntax-dynamic-import、babel-preset-env、babel-preset-stage-3、babel-preset-vue、babel-eslint 等模块必须安装在项目的 node_modules 中才有效，猜测与 post-css、babel、eslint 等模块内部机制有关。
