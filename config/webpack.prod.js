@@ -1,3 +1,4 @@
+require('./browserslist')
 const baseConfig = require('./webpack.base')
 const customConfig = require('./custom')
 const webpack = require('webpack')

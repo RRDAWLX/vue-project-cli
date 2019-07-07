@@ -39,9 +39,5 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
     "eslint-plugin-html": "^4.0.6"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+  }
 }
