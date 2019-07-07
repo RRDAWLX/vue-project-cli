@@ -36,7 +36,6 @@
   },
   "devDependencies": {
     "@rrdawlx/mock-server": "^1.2.1",
-    "autoprefixer": "^9.3.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
     "eslint-plugin-html": "^4.0.6"

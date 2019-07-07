@@ -1,6 +1,6 @@
 {
   "name": "vue-project-cli",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "vue project command line tool",
   "scripts": {
     "lint": "eslint ./bin ./config ./utils",
@@ -37,6 +37,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.5.1",
     "@babel/runtime-corejs3": "^7.5.1",
+    "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
     "chalk": "^2.4.1",
     "commander": "^2.19.0",

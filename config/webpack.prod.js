@@ -5,6 +5,7 @@ const merge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const postcssLoader = require('./postcss-loader')
 
 
 module.exports = merge(baseConfig, {
@@ -22,7 +23,7 @@ module.exports = merge(baseConfig, {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader',
+          postcssLoader,
           'less-loader',
         ]
       },

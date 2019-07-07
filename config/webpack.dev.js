@@ -3,6 +3,7 @@ const customConfig = require('./custom')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const postcssLoader = require('./postcss-loader')
 
 module.exports = merge(baseConfig, {
   mode: 'development',
@@ -15,7 +16,7 @@ module.exports = merge(baseConfig, {
         use: [
           'vue-style-loader',
           'css-loader',
-          'postcss-loader',
+          postcssLoader,
           'less-loader',
         ]
       },
