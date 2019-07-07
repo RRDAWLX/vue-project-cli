@@ -14,7 +14,7 @@ let newVersion = JSON.parse(execSync('git cat-file -p :package.json', {encoding:
 let oldVersion = JSON.parse(execSync('git cat-file -p HEAD^{tree}:package.json', {encoding: 'utf8'})).version
 
 if (semver.gt(newVersion, oldVersion)) {
-  console.log(chalk.green('✔ package.json 中的 version 已升级'))
+  console.log(chalk.green(`✔ package.json 中的 version 已升级：${oldVersion} => ${newVersion}。`))
   console.log()
   process.exit(0)
 } else {
