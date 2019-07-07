@@ -1,6 +1,6 @@
 {
   "name": "vue-project-cli",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "description": "vue project command line tool",
   "scripts": {
     "lint": "eslint ./bin ./config ./utils",
@@ -28,8 +28,16 @@
   },
   "homepage": "https://github.com/RRDAWLX/vue-project-cli#readme",
   "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.5.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.5.1",
+    "@babel/runtime-corejs3": "^7.5.1",
+    "babel-loader": "^8.0.6",
     "chalk": "^2.4.1",
     "commander": "^2.19.0",
     "connect-history-api-fallback": "^1.5.0",

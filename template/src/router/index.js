@@ -10,7 +10,16 @@ const routes = [
     path: '/test',
     component: () => import('../views/test')
   },
-  ...routeA
+
+  ...routeA,
+
+  {
+    name: 'default',
+    path: '*',
+    redirect: {
+      name: 'test',
+    },
+  },
 ]
 
 const router = new Router({
