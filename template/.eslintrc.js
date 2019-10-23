@@ -20,6 +20,8 @@ module.exports = {
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
-    "no-console": "off"
+    "no-console": "off",
+    "linebreak-style": "off",
+    "no-warning-comments": "error",
   }
 };

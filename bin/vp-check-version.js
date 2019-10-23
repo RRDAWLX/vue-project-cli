@@ -11,6 +11,7 @@ const chalk = require('chalk')
 // 获取暂存区中 package.json 的 version
 let newVersion = JSON.parse(execSync('git cat-file -p :package.json', {encoding: 'utf8'})).version
 // 获取版本库中 package.json 的 version
+// TODO：windows中以下命令报错
 let oldVersion = JSON.parse(execSync('git cat-file -p HEAD^{tree}:package.json', {encoding: 'utf8'})).version
 
 if (semver.gt(newVersion, oldVersion)) {
