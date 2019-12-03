@@ -30,7 +30,10 @@ module.exports = {
     alias: {
       'vue$': resolve('node_modules/vue/dist/vue.esm.js'),
       '@': resolve('src'),
-    }
+    },
+    // https://webpack.docschina.org/configuration/resolve/#resolve-symlinks
+    // 此配置项主要是在本地测试自己开发的独立包时起作用，比如在测试公用组件包。
+    symlinks: false,
   },
 
   resolveLoader: {
