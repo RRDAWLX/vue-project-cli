@@ -5,6 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const env = require('./env')
 const root = process.cwd()
 
+function resolve(...dir) {
+  return path.resolve(root, ...dir)
+}
+
 module.exports = {
   context: root,
 
@@ -12,7 +16,7 @@ module.exports = {
 
   output: {
     filename: 'js/[name].js',
-    path: path.resolve(root, 'dist'),
+    path: resolve(root, 'dist'),
     publicPath: '/'
   },
 
@@ -20,19 +24,20 @@ module.exports = {
     extensions: ['.vue', '.js', '.jsx', '.json'],
     modules: [
       'node_modules',
-      path.resolve(root, 'node_modules'),
-      path.resolve(__dirname, '../node_modules'),
+      resolve(root, 'node_modules'),
+      resolve(__dirname, '../node_modules'),
     ],
     alias: {
-      'src': path.resolve('root', 'src/')
+      'vue$': resolve('node_modules/vue/dist/vue.esm.js'),
+      '@': resolve('src'),
     }
   },
 
   resolveLoader: {
     modules: [
-      path.resolve(__dirname, '../node_modules'),
+      resolve(__dirname, '../node_modules'),
       'node_modules',
-      path.resolve(root, 'node_modules'),
+      resolve(root, 'node_modules'),
     ]
   },
 
@@ -77,7 +82,7 @@ module.exports = {
 
     // 生成一个HTML文件
     new HtmlWebpackPlugin({
-      template: path.resolve(root, 'src/index.html')
+      template: resolve(root, 'src/index.html')
     }),
   ],
 
