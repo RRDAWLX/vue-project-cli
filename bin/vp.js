@@ -4,6 +4,8 @@ const program = require('commander')
 const pkg = require('../package')
 
 program.version(pkg.version, '-v, --version')
+  .command('init [directory]',
+    '新建项目，如未提供目录名 directory，则以当前目录为根目录新建项目。')
   .command('dev', '项目开发')
   .command('build', '项目构建')
   .command('inspect', '查看项目配置')

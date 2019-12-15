@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@rrdawlx/mock-server": "^1.2.1",
+    "@rrdawlx/vue-project-cli": "^0.6.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
     "eslint-plugin-html": "^4.0.6"

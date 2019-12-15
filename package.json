@@ -1,14 +1,14 @@
 {
-  "name": "vue-project-cli",
-  "version": "0.5.1",
+  "name": "@rrdawlx/vue-project-cli",
+  "version": "0.6.0",
   "description": "vue project command line tool",
   "scripts": {
     "lint": "eslint ./bin ./config ./utils",
     "check-version": "node ./bin/vp-check-version.js"
   },
   "pre-commit": [
-    "lint",
-    "check-version"
+    "check-version",
+    "lint"
   ],
   "bin": {
     "vp": "bin/vp.js"
@@ -42,6 +42,7 @@
     "chalk": "^2.4.1",
     "commander": "^2.19.0",
     "connect-history-api-fallback": "^1.5.0",
+    "copy-concurrently": "^1.0.5",
     "css-loader": "^1.0.0",
     "express": "^4.16.3",
     "file-loader": "^1.1.11",

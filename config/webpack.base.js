@@ -16,7 +16,7 @@ module.exports = {
 
   output: {
     filename: 'js/[name].js',
-    path: resolve(root, 'dist'),
+    path: resolve('dist'),
     publicPath: '/'
   },
 
@@ -24,7 +24,7 @@ module.exports = {
     extensions: ['.vue', '.js', '.jsx', '.json'],
     modules: [
       'node_modules',
-      resolve(root, 'node_modules'),
+      resolve('node_modules'),
       resolve(__dirname, '../node_modules'),
     ],
     alias: {
@@ -40,7 +40,7 @@ module.exports = {
     modules: [
       resolve(__dirname, '../node_modules'),
       'node_modules',
-      resolve(root, 'node_modules'),
+      resolve('node_modules'),
     ]
   },
 
@@ -56,10 +56,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          'presets': [
+          presets: [
             '@babel/preset-env',
           ],
-          'plugins': [
+          plugins: [
             '@babel/plugin-syntax-dynamic-import',
             '@babel/plugin-syntax-import-meta',
             '@babel/plugin-proposal-class-properties',
@@ -71,7 +71,8 @@ module.exports = {
               }
             ],
           ],
-          'compact': false,
+          compact: false,
+          cacheDirectory: true,
         },
       },
     ]
@@ -85,7 +86,7 @@ module.exports = {
 
     // 生成一个HTML文件
     new HtmlWebpackPlugin({
-      template: resolve(root, 'src/index.html')
+      template: resolve('src/index.html')
     }),
   ],
 

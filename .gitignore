@@ -1,2 +1,4 @@
+.DS_Store
 node_modules/
 /template/package-lock.json
+/template/dist/

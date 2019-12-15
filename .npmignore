@@ -1,0 +1,6 @@
+.DS_Store
+PROBLEM.md
+/.eslintrc.js
+/template/package-lock.json
+/template/node_modules/
+/template/dist/
