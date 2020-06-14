@@ -41,3 +41,7 @@ Options:
   --node-env <env>  设置 process.env.NODE_ENV 的值，默认与 mode 为相同值。
   -h, --help        output usage information
 ```
+
+# 开发
+1. 在项目根目录执行 [```npm link```](https://docs.npmjs.com/cli-commands/link.html) 以在全局注册 vp 命令；
+2. 执行 ```vp -v``` 测试 vp 命令是否可用。
