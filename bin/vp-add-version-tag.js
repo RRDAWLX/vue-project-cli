@@ -10,8 +10,14 @@ const chalk = require('chalk')
 const Opts = {encoding: 'utf8'}
 
 // 版本号格式：v1.2.3
-let currentVersion = require('../package.json').version
-let recentVersionTag = execSync('git tag -l "v*.*.*" --sort=-refname', Opts).trim().split(/\r?\n/)[0]
+let currentVersion = JSON.parse(execSync('git cat-file -p "HEAD^{tree}:package.json"', Opts)).version
+let versionTags = execSync('git tag -l "v*.*.*"', Opts).trim().split(/\r?\n/)
+let recentVersionTag = versionTags[0]
+versionTags.forEach(tag => {
+  if (semver.gt(tag, recentVersionTag)) {
+    recentVersionTag = tag
+  }
+})
 
 // 当前的版本号要大于最近一个版本号标签中的版本号
 if (recentVersionTag) {   // 如果存在版本号标签
@@ -30,13 +36,15 @@ if (recentVersionTag) {   // 如果存在版本号标签
   if (recentVersionCommit !== currentCommit) {
     let recentVersion = recentVersionTag.slice(1)
 
-    // 则需校验当前 package.json 中的版本号是否大于上一个版本号
+    // 则需校验当前版本号是否大于上一个版本号
     if (semver.lte(currentVersion, recentVersion)) {
       console.log(chalk.red(`✘ 当前版本号 ${currentVersion} 未大于上一个发布版本号 ${recentVersion}，请升级版本号！`))
       process.exit(1)
     }
+  } else {
+    console.log(chalk.red('✘ 当前 commit 已有版本 tag ！'))
+    process.exit(1)
   }
 }
 
 execSync(`git tag -a v${currentVersion} -m "${new Date().toLocaleString()}" -f && git push --tags -f`)
-process.exit(0)
