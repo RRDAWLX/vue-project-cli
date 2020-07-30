@@ -1,6 +1,6 @@
 {
   "name": "@rrdawlx/vue-project-cli",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "vue project command line tool",
   "scripts": {
     "lint": "eslint ./bin ./config ./utils",
@@ -42,6 +42,7 @@
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
     "chalk": "^2.4.1",
+    "cli-table3": "^0.6.0",
     "commander": "^2.19.0",
     "connect-history-api-fallback": "^1.5.0",
     "copy-concurrently": "^1.0.5",
