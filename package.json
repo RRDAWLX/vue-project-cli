@@ -1,6 +1,6 @@
 {
   "name": "@rrdawlx/vue-project-cli",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "vue project command line tool",
   "scripts": {
     "lint": "eslint ./bin ./config ./utils",

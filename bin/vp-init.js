@@ -52,20 +52,18 @@ tasks.push(copy(
 ))
 
 Promise.all(tasks).then(() => {
-  let stdout
+  spinner.stop()
+  let cmd = 'git init'
 
   if (program.install) {
-    stdout = execSync('npm install', {
-      encoding: 'utf8',
-      cwd: targetDir,
-    })
+    cmd += '&& npm install'
   }
 
-  spinner.stop()
-
-  if (stdout) {
-    console.log(stdout)
-  }
+  execSync(cmd, {
+    encoding: 'utf8',
+    cwd: targetDir,
+    stdio: 'inherit',
+  })
 
   console.log(chalk.green('✔ 项目初始化成功，请修改项目的基础配置项。'))
 }).catch(e => {
