@@ -52,6 +52,32 @@ Options:
   -h, --help        output usage information
 ```
 
+# 示例
+vp-init  
+<img src="./imgs/init.png" width="600px" />
+
+vp-dev  
+<img src="./imgs/dev.png" width="600px" />
+
+vp-build  
+<img src="./imgs/build.png" width="600px" />
+
+vp-inspect  
+<img src="./imgs/inspect.png" width="600px" />
+
+vp-check-version  
+<img src="./imgs/check-version-1.png" width="300px" />
+<img src="./imgs/check-version-2.png" width="400px" />
+
+vp-check-npm-pub  
+<img src="./imgs/check-npm-pub.png" width="400px" />
+
+vp-add-version-tag  
+<img src="./imgs/add-version-tag.png" width="400px" />
+
+vp-print-deps-version  
+<img src="./imgs/print-deps-version.png" width="600px" />
+
 # 开发
 1. 在项目根目录执行 [```npm link```](https://docs.npmjs.com/cli-commands/link.html) 以在全局注册 vp 命令；
 2. 执行 ```vp -v``` 测试 vp 命令是否可用。
