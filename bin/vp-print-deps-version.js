@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const program = require('commander')
 const { exec, execSync } = require('child_process')
 const path = require('path')
 const fs = require('fs')
@@ -7,6 +8,8 @@ const chalk = require('chalk')
 const spinner = require('ora')('processing...')
 const Table = require('cli-table3')
 const tempFile = path.resolve(__dirname, '__temp.json')
+
+program.parse(process.argv)
 
 spinner.start()
 

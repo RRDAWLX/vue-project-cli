@@ -3,11 +3,13 @@
 /**
  * 此命令的应用场景是在发布项目时自动为项目打上版本号 tag，并推送到远端仓库。
  */
-
+const program = require('commander')
 const execSync = require('child_process').execSync
 const semver = require('semver')
 const chalk = require('chalk')
 const Opts = {encoding: 'utf8'}
+
+program.parse(process.argv)
 
 // 版本号格式：v1.2.3
 let currentVersion = JSON.parse(execSync('git cat-file -p "HEAD^{tree}:package.json"', Opts)).version

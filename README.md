@@ -6,16 +6,26 @@ vue project command line tool
 Usage: vp [options] [command]
 
 Options:
-  -v, --version    output the version number
-  -h, --help       output usage information
+  -v, --version       output the version number
+  -h, --help          output usage information
 
 Commands:
-  dev              项目开发
-  build            项目构建
-  inspect          查看项目配置
-  check-version    校验项目中 package.json 的 version 字段是否已升级
-  add-version-tag  给项目仓库打上基于 package.json 中 version 的 tag
-  help [cmd]       display help for [cmd]
+  init [directory]    新建项目，如未提供目录名 directory，则以当前目录为根目录新建项目。
+  dev                 项目开发
+  build               项目构建
+  inspect             查看项目配置
+  check-version       校验项目中 package.json 的 version 字段是否已升级
+  check-npm-pub       执行 npm publish 前的检查工作
+  add-version-tag     给项目仓库打上基于当前 commit 中的 package.json 中 version 的 tag
+  print-deps-version  输出项目依赖的版本信息
+  help [cmd]          display help for [cmd]
+```
+```
+Usage: vp-init [options] [directory]
+
+Options:
+  --no-install  不执行 npm install 命令
+  -h, --help    output usage information
 ```
 ```
 Usage: vp-dev [options]

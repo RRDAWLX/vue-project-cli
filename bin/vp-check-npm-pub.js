@@ -7,13 +7,15 @@
  * 3、是否有未提交的修改。
  * 4、本地仓库是否与远端保持一致。
  */
-
+const program = require('commander')
 const execSync = require('child_process').execSync
 const chalk = require('chalk')
 const readlineSync = require('readline-sync')
 const execOpts = {
   encoding: 'utf8',
 }
+
+program.parse(process.argv)
 
 // README是否已更新
 let readmeUpdated = readlineSync.keyInYN('README.md 是否已更新？')
