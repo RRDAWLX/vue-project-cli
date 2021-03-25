@@ -7,6 +7,7 @@ const copy = require('copy-concurrently')
 const chalk = require('chalk')
 const execSync = require('child_process').execSync
 const ora = require('ora')
+const pkg = require('../package.json')
 let dir = ''
 
 program
@@ -14,9 +15,24 @@ program
   .action((directory) => {
     dir = directory || dir
   })
+  .option('--no-update', `不检查当前安装的 ${pkg.name} 是否为最新版本，也不更新。`)
   .option('--no-install', '不执行 npm install 命令')
   .parse(process.argv)
 
+// 检查当前安装的 cli 工具是否为最新版本
+if (program.update) {
+  let latestVersion = execSync(`npm view ${pkg.name} version`, { encoding: 'utf8' })
+
+  if (latestVersion !== pkg.version) {
+    console.log(chalk.red(`${pkg.name}有新版本，开始安装：`))
+    execSync(`npm install ${pkg.name} -g`, {
+      encoding: 'utf8',
+      stdio: 'inherit',
+    })
+  }
+}
+
+// 初始化项目
 let targetDir = resolve(process.cwd(), dir)
 mkdirSync(targetDir, { recursive: true })
 

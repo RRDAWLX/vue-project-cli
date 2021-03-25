@@ -26,7 +26,7 @@ rimraf(webpackConfig.output.path, err => {
   if (err) {
     spinner.stop()
     console.log(err)
-    return
+    process.exit(1)
   }
 
   webpack(webpackConfig, (err, stats) => {
@@ -37,7 +37,7 @@ rimraf(webpackConfig.output.path, err => {
       if (err.details) {
         console.error(err.details)
       }
-      return
+      process.exit(1)
     }
 
     const info = stats.toJson()
